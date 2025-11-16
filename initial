@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Mohammad Allan — Backend, RPA & Robotics projects." />
+  <title>Mohammad Allan — Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --panel: #111318;
+      --text: #e6e6e6;
+      --muted: #b7bdc6;
+      --accent: #8bc34a; /* calm green */
+      --card: #151823;
+      --border: #1f2430;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --maxw: 1100px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg:#f8fafc; --panel:#ffffff; --text:#0b1220; --muted:#475569; --accent:#2563eb; --card:#ffffff; --border:#e2e8f0; --shadow: 0 10px 30px rgba(2,6,23,.06);} 
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; background: var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display:block; border-radius: calc(var(--radius) - 6px); }
+    .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 24px; }
+    .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg) 75%, transparent); border-bottom: 1px solid var(--border); }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; padding: 12px 24px; max-width: var(--maxw); margin: 0 auto; }
+    .brand { font-weight: 800; letter-spacing: .3px; }
+    .links { display:flex; gap: 18px; flex-wrap: wrap; }
+    .links a { font-size: 14px; color: var(--muted); }
+    .btn { display:inline-flex; align-items:center; gap:10px; padding: 10px 14px; border-radius: 999px; border: 1px solid var(--border); background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 90%, transparent), var(--panel)); box-shadow: var(--shadow); color: var(--text); font-weight: 600; transition: transform .08s ease; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.accent { border-color: color-mix(in oklab, var(--accent) 40%, var(--border)); background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 20%, var(--panel)), var(--panel)); }
+    .hero { display:grid; grid-template-columns: 1.3fr .7fr; gap: 28px; align-items:center; padding: 48px 0; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .hero-card { padding: 32px; }
+    .pill { display:inline-flex; align-items:center; gap:10px; border-radius: 999px; border:1px solid var(--border); padding:8px 12px; font-size: 12px; color: var(--muted); }
+    .title { font-size: clamp(28px, 5vw, 44px); line-height: 1.05; margin: 12px 0 16px; font-weight: 900; letter-spacing: -.5px; }
+    .lead { color: var(--muted); font-size: 16px; }
+    .stack { display:flex; gap:8px; margin-top: 14px; flex-wrap: wrap; }
+    .stack .tag { font-size: 12px; padding:6px 10px; border:1px solid var(--border); border-radius: 999px; color: var(--muted); }
+
+    section { padding: 12px 0 36px; }
+    h2 { font-size: 22px; margin: 0 0 16px; letter-spacing:.2px; }
+    .grid { display:grid; gap: 18px; }
+    .grid.cols-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .grid.cols-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    @media (max-width: 900px){ .hero { grid-template-columns: 1fr; } .grid.cols-3{ grid-template-columns:1fr; } .grid.cols-2{ grid-template-columns:1fr; } }
+
+    .project { padding: 16px; display:flex; flex-direction:column; gap: 10px; }
+    .project h3 { margin: 0; font-size: 18px; }
+    .meta { font-size: 13px; color: var(--muted); }
+    .row { display:flex; align-items:center; gap: 12px; flex-wrap: wrap; }
+    .spacer { height: 16px; }
+    .footer { border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; padding: 28px 0; text-align:center; }
+    .kbd { border:1px solid var(--border); background: var(--panel); padding:2px 6px; border-radius:6px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">Mohammad Allan</div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <button id="themeToggle" class="btn" title="Toggle theme" aria-label="Toggle theme">🌗</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="container hero">
+    <div class="card hero-card">
+      <span class="pill">Backend • RPA • Robotics</span>
+      <h1 class="title">I build automations & backend APIs that solve real problems.</h1>
+      <p class="lead">Computer Engineer & Hyper‑Automation Developer. I design reliable automations (UiPath, ElectroNeek), craft secure ASP.NET APIs, and teach robotics/STEM. Currently seeking a Junior Backend/RPA role.</p>
+      <div class="stack">
+        <span class="tag">C# / ASP.NET Core</span>
+        <span class="tag">SQL Server</span>
+        <span class="tag">UiPath • Blue Prism • ElectroNeek</span>
+        <span class="tag">Arduino</span>
+        <span class="tag">Git • GitHub</span>
+      </div>
+      <div class="spacer"></div>
+      <div class="row">
+        <a class="btn accent" href="#projects">See Projects</a>
+        <a class="btn" href="mailto:youremail@example.com">Email Me</a>
+        <a class="btn" href="https://www.linkedin.com/in/mohammad-allan-129037235/" target="https://www.linkedin.com/in/mohammad-allan-129037235/" rel="https://www.linkedin.com/in/mohammad-allan-129037235/">LinkedIn</a>
+        <a class="btn" href="https://drive.google.com/file/d/1pPdsARslNlWNJnHu-cJCzyx071NzYX5u/view?usp=sharing" target="_blank" rel="noreferrer">Download CV</a>
+      </div>
+    </div>
+    <div class="card" style="padding:0; overflow:hidden;">
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="card" style="padding:18px;">
+        <p>Hello! I’m <strong>Mohammad Allan</strong>, a backend developer and automation engineer. I’ve built invoice‑processing automations (email → extract → validate → post to ERP), a secure <strong>Task Management API</strong> (.NET 8, JWT, EF Core), and several <strong>Arduino</strong> robotics projects. I love turning messy processes into clean systems.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="grid cols-3">
+        <div class="card project"><h3>Backend</h3><p class="meta">C#, .NET 8, Web API, EF Core, REST, LINQ, xUnit</p></div>
+        <div class="card project"><h3>Automation</h3><p class="meta">UiPath, ElectroNeek, selectors & anchors, email bots</p></div>
+        <div class="card project"><h3>Robotics</h3><p class="meta">Arduino, sensors/actuators, control logic</p></div>
+        <div class="card project"><h3>Teaching</h3><p class="meta">STEM & robotics workshops, mentoring</p></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid cols-2">
+        <article class="card project">
+          <h3>InvoicerX — Automated Invoice Processing</h3>
+          <p class="meta">UiPath • Email → Extract → Validate → Post to Accounting</p>
+          <p>End‑to‑end RPA that fetches invoices from email, extracts structured data with selectors/anchors (no OCR), validates, then posts to the ERP. Cut processing time by ~70%.</p>
+        </article>
+
+        <article class="card project">
+          <h3>Task Management API</h3>
+          <p class="meta">.NET 8 • EF Core • SQL Server • JWT</p>
+          <p>CRUD API with roles, claims, and token‑based auth. Includes Postman collection and CI pipeline. Focus on clean architecture and unit tests with xUnit.</p>
+          </article>
+
+        <article class="card project">
+          <h3>Sumo Robot — Multi‑Strategy</h3>
+          <p class="meta">Arduino • DIP‑switch strategies • Line & distance sensors</p>
+          <p>Contest robot with selectable strategies (aggressive, evade, random) toggled via DIP switch. Modular codebase and calibration routine for quick tuning.</p>
+         </article>
+
+       </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience & Education</h2>
+      <div class="grid cols-2">
+        <div class="card project">
+          <h3>Hyper‑Automation Engineer Intern</h3>
+          <p class="meta">TJDEED TECHNOLOGY • 2024</p>
+          <p>Built automations with ElectroNeek, integrated web apps, and documented workflows.</p>
+        </div>
+        <div class="card project">
+          <h3>B.Sc. Computer Engineering</h3>
+          <p class="meta">Balqa Applied University • 2025</p>
+          <p>Graduation project: InvoicerX (RPA invoice pipeline). IEEE RAS member, robotics mentor.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="certs">
+      <h2>Certifications</h2>
+      <div class="grid cols-3">
+        <div class="card project"><h3>ElectroNeek RPA Associate Developer</h3><p class="meta">2024</p></div>
+        <div class="card project"><h3>UiPath RPA Associate Developer</h3><p class="meta">2025</p></div>
+        <div class="card project"><h3>Microsoft C# Foundational</h3><p class="meta">2024</p></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card" style="padding:18px;">
+        <p>Open to Junior Backend, RPA and teaching roles. Based in Jordan, available remote/hybrid.</p>
+        <div class="row">
+          <a class="btn accent" href="allanmohammad20@gmail.com">Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/mohammad-allan-129037235/" target="_blank">linkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Mohammad Allan • Built with plain HTML/CSS. Host on GitHub Pages.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.getElementById('themeToggle');
+    const key = 'pref-theme';
+    const apply = (mode) => {
+      document.documentElement.style.colorScheme = mode;
+      localStorage.setItem(key, mode);
+    };
+    const saved = localStorage.getItem(key);
+    if (saved) apply(saved);
+    toggle.addEventListener('click', () => apply((localStorage.getItem(key) === 'dark') ? 'light' : 'dark'));
+  </script>
+</body>
+</html>
