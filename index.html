@@ -1,209 +1,1020 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Mohammad Allan — Backend, RPA & Robotics projects." />
-  <title>Mohammad Allan — Portfolio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mohammad Allan — Computer Engineer working across backend development, intelligent automation, robotics, and technical education.">
+  <meta name="theme-color" content="#0b100e">
+  <title>Mohammad Allan | Computer Engineer</title>
   <style>
     :root {
-      --bg: #0b0c10;
-      --panel: #111318;
-      --text: #e6e6e6;
-      --muted: #b7bdc6;
-      --accent: #8bc34a; /* calm green */
-      --card: #151823;
-      --border: #1f2430;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 18px;
-      --maxw: 1100px;
+      color-scheme: dark;
+      --bg: #0b100e;
+      --surface: #111916;
+      --surface-2: #17211c;
+      --text: #edf4ef;
+      --muted: #a6b5aa;
+      --soft: #77877c;
+      --accent: #a3d977;
+      --accent-2: #d0f0ae;
+      --border: rgba(190, 220, 198, .13);
+      --shadow: 0 22px 70px rgba(0,0,0,.28);
+      --max: 1120px;
+      --radius: 20px;
     }
-    @media (prefers-color-scheme: light) {
-      :root { --bg:#f8fafc; --panel:#ffffff; --text:#0b1220; --muted:#475569; --accent:#2563eb; --card:#ffffff; --border:#e2e8f0; --shadow: 0 10px 30px rgba(2,6,23,.06);} 
+
+    [data-theme="light"] {
+      color-scheme: light;
+      --bg: #f4f7f3;
+      --surface: #ffffff;
+      --surface-2: #edf3eb;
+      --text: #17231b;
+      --muted: #536357;
+      --soft: #6b7b6e;
+      --accent: #477c32;
+      --accent-2: #315d24;
+      --border: rgba(34, 65, 39, .14);
+      --shadow: 0 18px 55px rgba(25,55,30,.08);
     }
+
     * { box-sizing: border-box; }
-    html, body { margin:0; padding:0; background: var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      transition: background .2s, color .2s;
+    }
+
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display:block; border-radius: calc(var(--radius) - 6px); }
-    .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 24px; }
-    .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg) 75%, transparent); border-bottom: 1px solid var(--border); }
-    .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; padding: 12px 24px; max-width: var(--maxw); margin: 0 auto; }
-    .brand { font-weight: 800; letter-spacing: .3px; }
-    .links { display:flex; gap: 18px; flex-wrap: wrap; }
-    .links a { font-size: 14px; color: var(--muted); }
-    .btn { display:inline-flex; align-items:center; gap:10px; padding: 10px 14px; border-radius: 999px; border: 1px solid var(--border); background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 90%, transparent), var(--panel)); box-shadow: var(--shadow); color: var(--text); font-weight: 600; transition: transform .08s ease; }
-    .btn:hover { transform: translateY(-1px); }
-    .btn.accent { border-color: color-mix(in oklab, var(--accent) 40%, var(--border)); background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 20%, var(--panel)), var(--panel)); }
-    .hero { display:grid; grid-template-columns: 1fr; gap: 28px; align-items:center; padding: 48px 0; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
-    .hero-card { padding: 32px; }
-    .pill { display:inline-flex; align-items:center; gap:10px; border-radius: 999px; border:1px solid var(--border); padding:8px 12px; font-size: 12px; color: var(--muted); }
-    .title { font-size: clamp(28px, 5vw, 44px); line-height: 1.05; margin: 12px 0 16px; font-weight: 900; letter-spacing: -.5px; }
-    .lead { color: var(--muted); font-size: 16px; }
-    .stack { display:flex; gap:8px; margin-top: 14px; flex-wrap: wrap; }
-    .stack .tag { font-size: 12px; padding:6px 10px; border:1px solid var(--border); border-radius: 999px; color: var(--muted); }
+    button { font: inherit; }
 
-    section { padding: 12px 0 36px; }
-    h2 { font-size: 22px; margin: 0 0 16px; letter-spacing:.2px; }
-    .grid { display:grid; gap: 18px; }
-    .grid.cols-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
-    .grid.cols-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
-    @media (max-width: 900px){ .hero { grid-template-columns: 1fr; } .grid.cols-3{ grid-template-columns:1fr; } .grid.cols-2{ grid-template-columns:1fr; } }
+    .container {
+      width: min(var(--max), calc(100% - 44px));
+      margin-inline: auto;
+    }
 
-    .project { padding: 16px; display:flex; flex-direction:column; gap: 10px; }
-    .project h3 { margin: 0; font-size: 18px; }
-    .meta { font-size: 13px; color: var(--muted); }
-    .row { display:flex; align-items:center; gap: 12px; flex-wrap: wrap; }
-    .spacer { height: 16px; }
-    .footer { border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; padding: 28px 0; text-align:center; }
-    .kbd { border:1px solid var(--border); background: var(--panel); padding:2px 6px; border-radius:6px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: color-mix(in srgb, var(--bg) 86%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -.035em;
+      font-size: 17px;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .icon-btn, .menu-btn {
+      width: 40px;
+      height: 40px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--text);
+      background: var(--surface);
+      cursor: pointer;
+    }
+
+    .menu-btn { display: none; }
+
+    .hero { padding: 88px 0 76px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow:before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(240px, .55fr);
+      align-items: end;
+      gap: 48px;
+    }
+
+    h1 {
+      margin: 18px 0 20px;
+      max-width: 780px;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -.065em;
+    }
+
+    h1 .highlight { color: var(--accent); }
+
+    .hero-copy {
+      max-width: 690px;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 19px);
+    }
+
+    .hero-copy strong {
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 11px 17px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 750;
+      transition: transform .18s, border-color .18s, background .18s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #10200d;
+      border-color: var(--accent);
+    }
+
+    .btn.primary:hover { background: var(--accent-2); }
+
+    .hero-aside {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, var(--surface-2), var(--surface));
+      box-shadow: var(--shadow);
+    }
+
+    .aside-label {
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .focus-list {
+      list-style: none;
+      margin: 14px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 13px;
+    }
+
+    .focus-list li {
+      display: flex;
+      gap: 11px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 65%, transparent);
+      flex: 0 0 auto;
+    }
+
+    .section { padding: 52px 0; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .section-kicker {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 5px 0 0;
+      font-size: clamp(27px, 4vw, 38px);
+      letter-spacing: -.045em;
+      line-height: 1.15;
+    }
+
+    .section-intro {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .panel {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .about-panel {
+      padding: clamp(22px, 4vw, 36px);
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 38px;
+    }
+
+    .about-panel p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .about-panel p + p { margin-top: 14px; }
+
+    .about-note {
+      border-left: 2px solid var(--accent);
+      padding: 5px 0 5px 20px;
+      align-self: center;
+      color: var(--text);
+      font-size: 17px;
+      font-weight: 650;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(4, minmax(0,1fr));
+    }
+
+    .skill-card { padding: 22px; }
+
+    .skill-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--surface-2);
+      color: var(--accent);
+      font-size: 17px;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: -.02em;
+    }
+
+    .skill-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+
+    .project-card {
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      min-height: 270px;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .project-number {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .12em;
+    }
+
+    .project-type {
+      color: var(--soft);
+      font-size: 11px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 9px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 10px 0 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: auto;
+      padding-top: 10px;
+    }
+
+    .tag {
+      padding: 5px 9px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--soft);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .timeline { display: grid; gap: 0; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 28px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item:first-child { padding-top: 8px; }
+    .timeline-item:last-child { border-bottom: 0; }
+
+    .timeline-meta {
+      color: var(--soft);
+      font-size: 12px;
+    }
+
+    .timeline-meta strong {
+      display: block;
+      color: var(--accent);
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .timeline-content p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .timeline-content .org {
+      color: var(--soft);
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .credential-card { padding: 22px; }
+
+    .credential-card p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .credential-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .credential {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .credential:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .credential strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .credential span {
+      display: block;
+      margin-top: 3px;
+      color: var(--soft);
+      font-size: 11px;
+    }
+
+    .contact-panel {
+      padding: clamp(24px, 5vw, 42px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .contact-panel p {
+      max-width: 560px;
+      color: var(--muted);
+      margin: 10px 0 0;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 48px;
+      border-top: 1px solid var(--border);
+      color: var(--soft);
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    @media (max-width: 850px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .hero-aside { max-width: 520px; }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      .about-panel {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        width: min(var(--max), calc(100% - 32px));
+      }
+
+      .nav-inner { min-height: 64px; }
+      .menu-btn { display: inline-grid; }
+      .nav-right { gap: 9px; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        padding: 16px 22px 20px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .hero { padding: 62px 0 46px; }
+      .section { padding: 38px 0; }
+
+      .section-head { display: block; }
+
+      .section-intro { margin-top: 10px; }
+
+      .projects-grid, .education-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .contact-panel {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-inner {
+        padding: 18px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .skills-grid { grid-template-columns: 1fr; }
+
+      .hero-actions .btn { width: 100%; }
+
+      h1 { font-size: 43px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <nav class="nav">
-    <div class="nav-inner">
-      <div class="brand">Mohammad Allan</div>
-      <div class="links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-        <button id="themeToggle" class="btn" title="Toggle theme" aria-label="Toggle theme">🌗</button>
+  <nav class="nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">MOHAMMAD<span>.</span></a>
+
+      <div class="nav-right">
+        <div class="nav-links" id="navLinks">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <button class="icon-btn" id="themeToggle" type="button"
+          aria-label="Switch color theme" title="Switch color theme">☼</button>
+
+        <button class="menu-btn" id="menuToggle" type="button"
+          aria-label="Open navigation" aria-expanded="false">☰</button>
       </div>
     </div>
   </nav>
 
-  <header class="container hero">
-    <div class="card hero-card">
-      <span class="pill">Backend • RPA • Robotics</span>
-      <h1 class="title">I build backend APIs, automate processes, and teach ICT & robotics</h1>
-      <p class="lead">Computer Engineer & Hyper‑Automation Developer. I design reliable automations (UiPath, Blue Prism), craft secure ASP.NET APIs, and teach robotics/STEM. Currently seeking a Junior Backend/RPA role.</p>
-      <div class="stack">
-        <span class="tag">C# / ASP.NET Core</span>
-        <span class="tag">SQL Server</span>
-        <span class="tag">UiPath • Blue Prism • ElectroNeek</span>
-        <span class="tag">Arduino</span>
-        <span class="tag">Git • GitHub</span>
+  <header class="container hero" id="home">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Computer Engineer · Jordan</div>
+
+        <h1>Building useful things with
+          <span class="highlight">software, automation</span> & robotics.
+        </h1>
+
+        <p class="hero-copy">
+          I'm <strong>Mohammad Allan</strong> — a Computer Engineer working
+          across backend development, business process automation, and
+          robotics education. I enjoy turning technical ideas and everyday
+          problems into practical, reliable solutions.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+          <a class="btn" href="mailto:allanmohammad20@gmail.com">Get in touch</a>
+          <a class="btn"
+            href="https://drive.google.com/uc?export=download&id=1DaqScqOV_CbQF6e_F1UReR5lGSKuLK9c"
+            target="_blank" rel="noopener noreferrer">Download CV ↓</a>
+        </div>
       </div>
-      <div class="spacer"></div>
-      <div class="row">
-        <a class="btn accent" href="#projects">See Projects</a>
-        <a class="btn" href="mailto:allanmohammad20@gmail.com">Email Me</a>
-        <a class="btn" href="https://www.linkedin.com/in/mohammad-allan-129037235/" target="https://www.linkedin.com/in/mohammad-allan-129037235/" rel="https://www.linkedin.com/in/mohammad-allan-129037235/">LinkedIn</a>
-<a class="btn" 
-   href="https://drive.google.com/uc?export=download&id=1DaqScqOV_CbQF6e_F1UReR5lGSKuLK9c" 
-   target="_blank" 
-   rel="noreferrer">
-   Download CV
-</a>
-      </div>
-    </div>
-    <div class="card" style="padding:0; overflow:hidden;">
+
+      <aside class="hero-aside">
+        <div class="aside-label">Areas I work in</div>
+        <ul class="focus-list">
+          <li><span class="dot"></span> Backend development & APIs</li>
+          <li><span class="dot"></span> RPA & business process automation</li>
+          <li><span class="dot"></span> Robotics, embedded systems & labs</li>
+          <li><span class="dot"></span> Technical teaching & mentoring</li>
+        </ul>
+      </aside>
     </div>
   </header>
 
   <main class="container">
-    <section id="about">
-      <h2>About Me</h2>
-      <div class="card" style="padding:18px;">
-        <p>Hello! I’m <strong>Mohammad Allan</strong>, a backend developer and automation engineer. I’ve built invoice‑processing automations (email → extract → validate → post to ERP), a secure <strong>Task Management API</strong> (.NET 8, JWT, EF Core), and several <strong>Arduino</strong> robotics projects. I love turning messy processes into clean systems.</p>
+    <section class="section" id="about">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">A little about me</div>
+          <h2>Engineering mindset. Practical approach.</h2>
+        </div>
+      </div>
+
+      <div class="panel about-panel">
+        <div>
+          <p>
+            I hold a Bachelor's degree in Computer Engineering from
+            Al-Balqa Applied University. My experience and interests bring
+            together software development, automation, and hands-on robotics.
+          </p>
+          <p>
+            I've worked on invoice-processing automation, backend API
+            development, and robotics activities. I also enjoy helping
+            students understand engineering concepts by connecting theory
+            with practical lab work.
+          </p>
+        </div>
+
+        <div class="about-note">
+          I’m interested in technology that makes work simpler, systems
+          more dependable, and learning more hands-on.
+        </div>
       </div>
     </section>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="grid cols-3">
-        <div class="card project"><h3>Backend</h3><p class="meta">C#, .NET 8, Web API, EF Core, REST, LINQ, xUnit</p></div>
-        <div class="card project"><h3>Automation</h3><p class="meta">UiPath, ElectroNeek, selectors & anchors, email bots</p></div>
-        <div class="card project"><h3>Robotics</h3><p class="meta">Arduino, sensors/actuators, control logic</p></div>
-        <div class="card project"><h3>Teaching</h3><p class="meta">ICT & robotics workshops, mentoring</p></div>
+    <section class="section" id="skills">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Technical toolkit</div>
+          <h2>Skills & technologies</h2>
+        </div>
+        <p class="section-intro">
+          A snapshot of the tools and areas I have worked with. The level
+          of experience varies by technology.
+        </p>
       </div>
-    </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="grid cols-2">
-        <article class="card project">
-          <h3>InvoicerX — Automated Invoice Processing</h3>
-          <p class="meta">UiPath • Email → Extract → Validate → Post to Accounting</p>
-          <p>End‑to‑end RPA that fetches invoices from email, extracts structured data with selectors/anchors (no OCR), validates, then posts to the ERP. Cut processing time by ~70%.</p>
+      <div class="grid skills-grid">
+        <article class="panel skill-card">
+          <div class="skill-icon">⌘</div>
+          <h3>Backend & APIs</h3>
+          <p>C#, ASP.NET Core, REST APIs, Entity Framework Core, LINQ,
+            SQL Server, JWT authentication.</p>
         </article>
 
-        <article class="card project">
+        <article class="panel skill-card">
+          <div class="skill-icon">↻</div>
+          <h3>Automation & BPM</h3>
+          <p>UiPath, ElectroNeek, Tungsten TotalAgility, workflow design,
+            selectors, anchors, process automation.</p>
+        </article>
+
+        <article class="panel skill-card">
+          <div class="skill-icon">⌁</div>
+          <h3>Robotics & Embedded</h3>
+          <p>Arduino, sensors, actuators, motor control, embedded systems,
+            practical robotics activities.</p>
+        </article>
+
+        <article class="panel skill-card">
+          <div class="skill-icon">▦</div>
+          <h3>Tools & Teaching</h3>
+          <p>Git, GitHub, Postman, Power BI, technical troubleshooting,
+            student mentoring and lab support.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Selected work</div>
+          <h2>Projects</h2>
+        </div>
+        <p class="section-intro">
+          A selection of software, automation, and robotics work. Add
+          repository links and project screenshots when they are ready to share.
+        </p>
+      </div>
+
+      <div class="grid projects-grid">
+        <article class="panel project-card">
+          <div class="project-top">
+            <span class="project-number">01 / AUTOMATION</span>
+            <span class="project-type">Graduation project</span>
+          </div>
+          <h3>InvoicerX — Invoice Processing Automation</h3>
+          <p>
+            An RPA workflow designed to automate invoice handling from email
+            intake through data extraction and validation to transfer into
+            accounting software. Used selectors and anchors to work with
+            invoice layouts without relying on OCR.
+          </p>
+          <div class="tags">
+            <span class="tag">UiPath</span>
+            <span class="tag">RPA</span>
+            <span class="tag">Data extraction</span>
+            <span class="tag">Workflow automation</span>
+          </div>
+        </article>
+
+        <article class="panel project-card">
+          <div class="project-top">
+            <span class="project-number">02 / BACKEND</span>
+            <span class="project-type">API development</span>
+          </div>
           <h3>Task Management API</h3>
-          <p class="meta">.NET 8 • EF Core • SQL Server • JWT</p>
-          <p>CRUD API with roles, claims, and token‑based auth. Includes Postman collection and CI pipeline. Focus on clean architecture and unit tests with xUnit.</p>
+          <p>
+            A RESTful API for managing tasks, built with ASP.NET Core and
+            SQL Server. Includes CRUD operations, Entity Framework Core,
+            JWT authentication, and role/claim-based authorization.
+          </p>
+          <div class="tags">
+            <span class="tag">C#</span>
+            <span class="tag">ASP.NET Core</span>
+            <span class="tag">EF Core</span>
+            <span class="tag">SQL Server</span>
+            <span class="tag">JWT</span>
+          </div>
+        </article>
+
+        <article class="panel project-card">
+          <div class="project-top">
+            <span class="project-number">03 / ROBOTICS</span>
+            <span class="project-type">Embedded systems</span>
+          </div>
+          <h3>Sumo Robot — Multi-Strategy</h3>
+          <p>
+            An Arduino-based sumo robot project using line and distance
+            sensors, with selectable operating strategies and a focus on
+            control logic and calibration.
+          </p>
+          <div class="tags">
+            <span class="tag">Arduino</span>
+            <span class="tag">Sensors</span>
+            <span class="tag">Control logic</span>
+            <span class="tag">Robotics</span>
+          </div>
+        </article>
+
+        <article class="panel project-card">
+          <div class="project-top">
+            <span class="project-number">04 / EDUCATION</span>
+            <span class="project-type">Lab & mentoring</span>
+          </div>
+          <h3>Robotics & STEM Learning Activities</h3>
+          <p>
+            Hands-on learning and student mentoring across robotics and
+            computer engineering topics, connecting core concepts with
+            practical lab activities and project work.
+          </p>
+          <div class="tags">
+            <span class="tag">Robotics</span>
+            <span class="tag">STEM</span>
+            <span class="tag">Teaching</span>
+            <span class="tag">Mentoring</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Professional journey</div>
+          <h2>Experience</h2>
+        </div>
+      </div>
+
+      <div class="panel" style="padding: 12px 26px;">
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <strong>Current</strong>Jordan
+            </div>
+            <div class="timeline-content">
+              <h3>Robotics Lab Engineer</h3>
+              <div class="org">Middle East University</div>
+              <p>
+                Support robotics and engineering lab activities, guide
+                students through practical work, and help connect course
+                concepts with hands-on experimentation.
+              </p>
+            </div>
           </article>
 
-        <article class="card project">
-          <h3>Sumo Robot — Multi‑Strategy</h3>
-          <p class="meta">Arduino • DIP‑switch strategies • Line & distance sensors</p>
-          <p>Contest robot with selectable strategies (aggressive, evade, random) toggled via DIP switch. Modular codebase and calibration routine for quick tuning.</p>
-         </article>
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <strong>Previous experience</strong>Jordan
+            </div>
+            <div class="timeline-content">
+              <h3>Hyper-Automation Engineer Intern</h3>
+              <div class="org">Tjdeed Technology</div>
+              <p>
+                Worked on automation workflows using ElectroNeek, web
+                application integration, and workflow documentation.
+              </p>
+            </div>
+          </article>
 
-       </div>
-    </section>
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <strong>Previous experience</strong>Jordan
+            </div>
+            <div class="timeline-content">
+              <h3>Technical Manager — Robotics Center</h3>
+              <div class="org">Nazzal Youth Club</div>
+              <p>
+                Supported robotics activities and technical learning,
+                including mentoring and practical project work.
+              </p>
+            </div>
+          </article>
+        </div>
 
-    <section id="experience">
-      <h2>Experience & Education</h2>
-      <div class="grid cols-2">
-        <div class="card project">
-          <h3>Hyper‑Automation Engineer Intern</h3>
-          <p class="meta">TJDEED TECHNOLOGY </p>
-          <p>Built automations with ElectroNeek, integrated web apps, and documented workflows.</p>
-        </div>
-        <div class="card project">
-          <h3>Technical Manger of Robotics Center</h3>
-          <p class="meta">Nazzal Youth Club </p>
-          <p>Graduation project: InvoicerX (RPA invoice pipeline). IEEE RAS member, robotics mentor.</p>
-        </div>
-        
-        <div class="card project">
-          <h3>B.Sc. Computer Engineering</h3>
-          <p class="meta">Balqa Applied University </p>
-          <p>Graduation project: InvoicerX (RPA invoice pipeline). IEEE RAS member, robotics mentor.</p>
-        </div>
+        <p style="color:var(--soft);font-size:11px;margin:4px 0 12px;">
+          Add exact employment dates and adjust each description to match
+          your official job titles and responsibilities before publishing.
+        </p>
       </div>
     </section>
 
-    <section id="certs">
-      <h2>Certifications</h2>
-      <div class="grid cols-3">
-        <div class="card project"><h3>UiPath RPA Associate Developer</h3><p class="meta">2024</p></div>
-        <div class="card project"><h3>ElectroNeek RPA Associate Developer</h3><p class="meta">2024</p></div>
-        <div class="card project"><h3>Microsoft C# Foundational</h3><p class="meta">2024</p></div>
-        <div class="card project"><h3>Power BI</h3><p class="meta">2024</p></div>
+    <section class="section" id="education">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Learning & development</div>
+          <h2>Education & credentials</h2>
+        </div>
+      </div>
+
+      <div class="education-grid">
+        <article class="panel credential-card">
+          <div class="section-kicker">Education</div>
+          <h3 style="margin-top:8px;">B.Sc. in Computer Engineering</h3>
+          <p>Al-Balqa Applied University · Jordan</p>
+          <p>Graduation project: InvoicerX — automated invoice processing.</p>
+        </article>
+
+        <article class="panel credential-card">
+          <div class="section-kicker">Certifications & training</div>
+          <div class="credential-list" style="margin-top:8px;">
+            <div class="credential">
+              <strong>ElectroNeek Certified RPA Developer</strong>
+              <span>Professional certification</span>
+            </div>
+            <div class="credential">
+              <strong>Tungsten Automation TotalAgility Citizen Developer</strong>
+              <span>Certification</span>
+            </div>
+            <div class="credential">
+              <strong>UiPath Automation Developer Associate Training</strong>
+              <span>Training — not presented as a certification</span>
+            </div>
+            <div class="credential">
+              <strong>Power BI & C# learning</strong>
+              <span>Additional technical training</span>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="card" style="padding:18px;">
-        <p>Open to Junior Backend, RPA and teaching roles. Based in Jordan, available remote/hybrid.</p>
-        <div class="row">
-          <a class="btn accent" href="mailto:allanmohammad20@gmail.com">Email Me</a>
-          <a class="btn" href="https://www.linkedin.com/in/mohammad-allan-129037235/" target="_blank">linkedIn</a>
+    <section class="section" id="contact">
+      <div class="panel contact-panel">
+        <div>
+          <div class="section-kicker">Have an opportunity?</div>
+          <h2>Let's connect.</h2>
+          <p>
+            I'm open to opportunities where I can contribute across software
+            development, automation, robotics, and technical education.
+          </p>
+        </div>
+
+        <div class="hero-actions" style="margin:0;">
+          <a class="btn primary" href="mailto:allanmohammad20@gmail.com">Email me ↗</a>
+          <a class="btn"
+            href="https://www.linkedin.com/in/mohammad-allan-129037235/"
+            target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">© <span id="year"></span> Mohammad Allan • Built with plain HTML/CSS. Host on GitHub Pages.</div>
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Mohammad Allan. Built with care.</span>
+      <div class="footer-links">
+        <a href="mailto:allanmohammad20@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/mohammad-allan-129037235/"
+          target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="#home">Back to top ↑</a>
+      </div>
+    </div>
   </footer>
 
   <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    const prefersLight = window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: light)').matches;
+
+    function setTheme(theme) {
+      root.dataset.theme = theme;
+      themeToggle.textContent = theme === 'light' ? '☾' : '☼';
+      themeToggle.setAttribute(
+        'aria-label',
+        theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'
+      );
+      localStorage.setItem('portfolio-theme', theme);
+    }
+
+    setTheme(savedTheme || (prefersLight ? 'light' : 'dark'));
+
+    themeToggle.addEventListener('click', () => {
+      setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+    });
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute(
+        'aria-label',
+        isOpen ? 'Close navigation' : 'Open navigation'
+      );
+      menuToggle.textContent = isOpen ? '×' : '☰';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Open navigation');
+        menuToggle.textContent = '☰';
+      });
+    });
+
     document.getElementById('year').textContent = new Date().getFullYear();
-    const toggle = document.getElementById('themeToggle');
-    const key = 'pref-theme';
-    const apply = (mode) => {
-      document.documentElement.style.colorScheme = mode;
-      localStorage.setItem(key, mode);
-    };
-    const saved = localStorage.getItem(key);
-    if (saved) apply(saved);
-    toggle.addEventListener('click', () => apply((localStorage.getItem(key) === 'dark') ? 'light' : 'dark'));
   </script>
 </body>
 </html>
